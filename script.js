@@ -72,9 +72,13 @@ looker.plugins.visualizations.add({
 
 
 
+
+
+
     var data_1 = [
       {x: 0.6, value: 22},
       {x: 1.7, value: 55},
+      {x: 1.7, value: 80},
       {x: 2.3, value: 50},
       {x: 3.5, value: 80},
       {x: 3.9, value: 74},
@@ -94,7 +98,7 @@ looker.plugins.visualizations.add({
   chart = anychart.scatter();
 
   // create the first series (marker) and set the data
-  var series1 = chart.marker(data_1);
+  var series1 = chart.marker(data);
 
   // create the second series (line) and set the data
   var series2 = chart.line(data_2);
