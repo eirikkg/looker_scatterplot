@@ -1,3 +1,5 @@
+
+chart;
 looker.plugins.visualizations.add({
   // Id and Label are legacy properties that no longer have any function besides documenting
   // what the visualization used to have. The properties are now set via the manifest
@@ -18,6 +20,16 @@ looker.plugins.visualizations.add({
   },
   // Set up the initial state of the visualization
   create: function(element, config) {
+
+    cahrt = anychart.scatter();
+    chart.container("container");
+
+  // initiate drawing the chart
+
+
+
+    console.log(config);
+    console.log(element);
 
     // Insert a <style> tag with some styles we'll use later.
     element.innerHTML = `
@@ -72,9 +84,6 @@ looker.plugins.visualizations.add({
 
     data_3 = [];
   data.forEach((row)=>{
-    console.log(row);
-    console.log(row[queryResponse.fields.dimensions[0].name].value);
-
     data_3.push({x: row[queryResponse.fields.dimensions[0].name].value , y:row[queryResponse.fields.dimensions[1].name].value});
   });
 
@@ -102,22 +111,19 @@ looker.plugins.visualizations.add({
     ];
 
   // create a chart
-  chart = anychart.scatter();
+
 
   // create the first series (marker) and set the data
-  var series1 = chart.marker(data_3);
+  var series1 = chart.bubble(data_3);
 
   // create the second series (line) and set the data
   //var series2 = chart.line(data_2);
   //var series1 = chart.bubble(data_3);
   chart.xAxis().title(queryResponse.fields.dimensions[0].name);
   chart.yAxis().title(queryResponse.fields.dimensions[1].name);
+  chart.draw();
 
   // set the container id
-  chart.container("container");
-
-  // initiate drawing the chart
-  chart.draw();
 
 
 
