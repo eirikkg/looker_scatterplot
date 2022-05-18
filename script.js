@@ -37,6 +37,8 @@ looker.plugins.visualizations.add({
           font-size: 18px;
         }
       </style>
+      <div id="container" style="width: 100%; height: 500px"></div>
+
     `;
 
     // Create a container element to let us center the text.
@@ -54,7 +56,7 @@ looker.plugins.visualizations.add({
     this.clearErrors();
 
     // Throw some errors and exit if the shape of the data isn't what this chart needs
-    if (queryResponse.fields.dimensions.length == 0) {
+    if (queryResponse.fields.dimensions.length === 0) {
       this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
       return;
     }
@@ -65,6 +67,41 @@ looker.plugins.visualizations.add({
 
     // Insert the data into the page
     this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell);
+
+    var data_1 = [
+      {x: 0.6, value: 22},
+      {x: 1.7, value: 55},
+      {x: 2.3, value: 50},
+      {x: 3.5, value: 80},
+      {x: 3.9, value: 74},
+      {x: 4, value: 68},
+      {x: 4, value: 76},
+      {x: 4.1, value: 84},
+      {x: 4.7, value: 93}
+    ];
+
+    // create data for the second series
+    var data_2 = [
+      {x: 0.5, value: 17.5},
+      {x: 4.75, value: 100}
+    ];
+
+  // create a chart
+  chart = anychart.scatter();
+
+  // create the first series (marker) and set the data
+  var series1 = chart.marker(data_1);
+
+  // create the second series (line) and set the data
+  var series2 = chart.line(data_2);
+
+  // set the container id
+  chart.container("container");
+
+  // initiate drawing the chart
+  chart.draw();
+
+    this._textElement.append
 
     // Set the size to the user-selected size
     if (config.font_size == "small") {

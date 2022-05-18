@@ -10,5 +10,5 @@ visualization: {
   id: "@{vis_id}"
   label: "@{vis_label}"
   file: "script.js"
-  dependencies: []
+  dependencies: ["https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js", "https://cdn.anychart.com/releases/8.11.0/js/anychart-scatter.min.js"]
 }
