@@ -60,6 +60,8 @@ looker.plugins.visualizations.add({
       this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
       return;
     }
+    console.log(queryResponse);
+    console.log(data);
 
     // Grab the first cell of the data
     var firstRow = data[0];
@@ -67,6 +69,8 @@ looker.plugins.visualizations.add({
 
     // Insert the data into the page
     this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell + " Hei");
+
+
 
     var data_1 = [
       {x: 0.6, value: 22},
