@@ -1,5 +1,5 @@
 
-chart;
+var chart;
 looker.plugins.visualizations.add({
   // Id and Label are legacy properties that no longer have any function besides documenting
   // what the visualization used to have. The properties are now set via the manifest
@@ -21,7 +21,7 @@ looker.plugins.visualizations.add({
   // Set up the initial state of the visualization
   create: function(element, config) {
 
-    cahrt = anychart.scatter();
+    chart = anychart.scatter();
     chart.container("container");
 
   // initiate drawing the chart
