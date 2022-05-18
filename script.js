@@ -18,7 +18,7 @@ looker.plugins.visualizations.add({
   create: function (element, config) {
     element.innerHTML = `
       <style>
-        .hello-world-vis {
+        #container{
           /* Vertical centering */
           height: 100%;
           display: flex;
@@ -47,11 +47,11 @@ looker.plugins.visualizations.add({
     // Insert a <style> tag with some styles we'll use later.
 
     // Create a container element to let us center the text.
-    var container = element.appendChild(document.createElement("div"));
-    container.className = "hello-world-vis";
+    //var container = element.appendChild(document.createElement("div"));
+    //container.className = "hello-world-vis";
 
     // Create an element to contain the text.
-    this._textElement = container.appendChild(document.createElement("div"));
+    //this._textElement = container.appendChild(document.createElement("div"));
   },
   // Render in response to the data or settings changing
   updateAsync: function (data, element, config, queryResponse, details, done) {
