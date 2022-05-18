@@ -16,6 +16,7 @@ looker.plugins.visualizations.add({
   },
   // Set up the initial state of the visualization
   create: function (element, config) {
+    console.log("START");
     element.innerHTML = `
       <style>
         #container{
@@ -55,6 +56,8 @@ looker.plugins.visualizations.add({
   },
   // Render in response to the data or settings changing
   updateAsync: function (data, element, config, queryResponse, details, done) {
+
+    console.log("UPDATE");
     console.log("DETAILS");
     console.log(details);
 
