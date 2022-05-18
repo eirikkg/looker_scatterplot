@@ -21,17 +21,7 @@ looker.plugins.visualizations.add({
   // Set up the initial state of the visualization
   create: function(element, config) {
 
-    chart = anychart.scatter();
-    chart.container("container");
 
-  // initiate drawing the chart
-
-
-
-    console.log(config);
-    console.log(element);
-
-    // Insert a <style> tag with some styles we'll use later.
     element.innerHTML = `
       <style>
         .hello-world-vis {
@@ -50,8 +40,20 @@ looker.plugins.visualizations.add({
         }
       </style>
       <div id="container" style="width: 100%; height: 100%"></div>
-
     `;
+
+    chart = anychart.scatter();
+    chart.container("container");
+
+  // initiate drawing the chart
+
+
+
+    console.log(config);
+    console.log(element);
+
+    // Insert a <style> tag with some styles we'll use later.
+
 
     // Create a container element to let us center the text.
     var container = element.appendChild(document.createElement("div"));
