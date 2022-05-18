@@ -76,6 +76,8 @@ looker.plugins.visualizations.add({
     data_3.append({x: row[queryResponse.fields.dimensions[0].name] , y:row[queryResponse.fields.dimensions[1].name]});
   });
 
+  console.log(data_3);
+
 
 
     var data_1 = [
@@ -101,11 +103,11 @@ looker.plugins.visualizations.add({
   chart = anychart.scatter();
 
   // create the first series (marker) and set the data
-  //var series1 = chart.marker(data);
+  var series1 = chart.marker(data_3);
 
   // create the second series (line) and set the data
   //var series2 = chart.line(data_2);
-  var series1 = chart.bubble(data_3);
+  //var series1 = chart.bubble(data_3);
   chart.xAxis().title(queryResponse.fields.dimensions[0].name);
   chart.yAxis().title(queryResponse.fields.dimensions[1].name);
 
