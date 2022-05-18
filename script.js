@@ -73,7 +73,9 @@ looker.plugins.visualizations.add({
     data_3 = [];
   data.forEach((row)=>{
     console.log(row);
-    data_3.append({x: row[queryResponse.fields.dimensions[0].name] , y:row[queryResponse.fields.dimensions[1].name]});
+    console.log(row[queryResponse.fields.dimensions[0].name]);
+
+    data_3.push({x: row[queryResponse.fields.dimensions[0].name] , y:row[queryResponse.fields.dimensions[1].name]});
   });
 
   console.log(data_3);
