@@ -66,7 +66,7 @@ looker.plugins.visualizations.add({
     var firstCell = firstRow[queryResponse.fields.dimensions[0].name];
 
     // Insert the data into the page
-    this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell);
+    this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell + " Hei");
 
     var data_1 = [
       {x: 0.6, value: 22},
@@ -101,7 +101,7 @@ looker.plugins.visualizations.add({
   // initiate drawing the chart
   chart.draw();
 
-    this._textElement.append
+
 
     // Set the size to the user-selected size
     if (config.font_size == "small") {
