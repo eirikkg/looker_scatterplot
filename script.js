@@ -73,9 +73,9 @@ looker.plugins.visualizations.add({
     data_3 = [];
   data.forEach((row)=>{
     console.log(row);
-    console.log(row[queryResponse.fields.dimensions[0].name]);
+    console.log(row[queryResponse.fields.dimensions[0].name].value);
 
-    data_3.push({x: row[queryResponse.fields.dimensions[0].name] , y:row[queryResponse.fields.dimensions[1].name]});
+    data_3.push({x: row[queryResponse.fields.dimensions[0].name].value , y:row[queryResponse.fields.dimensions[1].name].value});
   });
 
   console.log(data_3);
