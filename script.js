@@ -143,6 +143,9 @@ looker.plugins.visualizations.add({
     // Insert the data into the page
     //this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell + " Hei");
 
+
+console.log("queryResponse");
+    console.log(queryResponse);
     data_3 = [];
     data.forEach((row) => {
       data_3.push({
@@ -188,9 +191,9 @@ looker.plugins.visualizations.add({
 
     // Set the size to the user-selected size
     if (config.font_size == "small") {
-      this._textElement.className = "hello-world-text-small";
+      //this._textElement.className = "hello-world-text-small";
     } else {
-      this._textElement.className = "hello-world-text-large";
+      //this._textElement.className = "hello-world-text-large";
     }
 
     // We are done rendering! Let Looker know.
