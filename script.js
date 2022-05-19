@@ -73,16 +73,6 @@ looker.plugins.visualizations.add({
       var obj = {};
       obj[field.label_short] = field.name;
       dimentions.push(obj);
-
-      /*
-      id = "color_" + field.name;
-      options[id] = {
-        label: field.label_short + " Color",
-        default: "#8B7DA8",
-        section: "Style",
-        type: "string",
-        display: "color",
-      };*/
     });
 
     queryResponse.fields.dimension_like.forEach(function (field) {
@@ -149,32 +139,12 @@ console.log("queryResponse");
     data_3 = [];
     data.forEach((row) => {
       data_3.push({
-        x: row[queryResponse.fields.dimensions[0].name].value,
-        y: row[queryResponse.fields.dimensions[1].name].value,
+        x: row[config.x_axis].value,
+        y: row[config.y_axis].value,
       });
     });
 
     console.log(data_3);
-
-    var data_1 = [
-      { x: 0.6, value: 22 },
-      { x: 1.7, value: 55 },
-      { x: 1.7, value: 80 },
-      { x: 2.3, value: 50 },
-      { x: 3.5, value: 80 },
-      { x: 3.9, value: 74 },
-      { x: 4, value: 68 },
-      { x: 4, value: 76 },
-      { x: 4.1, value: 84 },
-      { x: 4.7, value: 93 },
-    ];
-
-    // create data for the second series
-    var data_2 = [
-      { x: 0.5, value: 17.5 },
-      { x: 4.75, value: 100 },
-    ];
-
     // create a chart
 
     // create the first series (marker) and set the data
@@ -184,6 +154,7 @@ console.log("queryResponse");
     // create the second series (line) and set the data
     //var series2 = chart.line(data_2);
     //var series1 = chart.bubble(data_3);
+
     chart.xAxis().title(queryResponse.fields.dimensions[0].name);
     chart.yAxis().title(queryResponse.fields.dimensions[1].name);
     chart.draw();
