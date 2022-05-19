@@ -61,16 +61,16 @@ looker.plugins.visualizations.add({
     console.log("config");
     console.log(config);
 
-    var el = element.getElementById('container');
+    var el = document.getElementById('scatter_container');
     el.removeChild(el.lastElementChild);
 
 
     var container = element.appendChild(document.createElement("div"));
-    container.setAttribute("id", "container");
+    container.setAttribute("id", "scatter_container");
 
 
     chart = anychart.scatter();
-    chart.container("container");
+    chart.container("scatter_container");
 
 
     options = {};
