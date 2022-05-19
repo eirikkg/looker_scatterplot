@@ -56,7 +56,6 @@ looker.plugins.visualizations.add({
   },
   // Render in response to the data or settings changing
   updateAsync: function (data, element, config, queryResponse, details, done) {
-
     console.log("UPDATE");
     console.log("DETAILS");
     console.log(details);
@@ -68,10 +67,9 @@ looker.plugins.visualizations.add({
 
     var dimentions = [];
     queryResponse.fields.measure_like.forEach(function (field) {
-
-      dimentions.push({field.name:field.label_short});
-
-
+      var obj = {};
+      obj[field.name] = field.label_short;
+      dimentions.push(obj);
 
       /*
       id = "color_" + field.name;
@@ -87,21 +85,21 @@ looker.plugins.visualizations.add({
     console.log("dimentions");
     console.log(dimentions);
 
-      options["y_axis"] = {
-        label: + "Y Axis ",
-        section: "Series",
-        type: "string",
-        display: "select",
-        values:dimentions,
-      };
+    options["y_axis"] = {
+      label: +"Y Axis ",
+      section: "Series",
+      type: "string",
+      display: "select",
+      values: dimentions,
+    };
 
-      options["x_axis"] = {
-        label: + "X Axis ",
-        section: "Series",
-        type: "string",
-        display: "select",
-        values:[{"test":"jadda"}],
-      };
+    options["x_axis"] = {
+      label: +"X Axis ",
+      section: "Series",
+      type: "string",
+      display: "select",
+      values: [{ test: "jadda" }],
+    };
     this.trigger("registerOptions", options); // register options with parent page to update visConfig
 
     // Clear any errors from previous updates
