@@ -60,10 +60,20 @@ looker.plugins.visualizations.add({
     console.log("UPDATE");
     console.log("DETAILS");
     console.log(details);
+    console.log("config");
+    console.log(config);
 
     options = {};
     // Create an option for each measure in your query
+
+    var dimentions = [];
     queryResponse.fields.measure_like.forEach(function (field) {
+
+      dimentions.push(field.name);
+
+
+
+      /*
       id = "color_" + field.name;
       options[id] = {
         label: field.label_short + " Color",
@@ -71,8 +81,24 @@ looker.plugins.visualizations.add({
         section: "Style",
         type: "string",
         display: "color",
-      };
+      };*/
     });
+
+      options["y_axis"] = {
+        label: + "Y Axis ",
+        section: "Series",
+        type: "string",
+        display: "select",
+        values:dimentions,
+      };
+
+      options["x_axis"] = {
+        label: + "X Axis ",
+        section: "Series",
+        type: "string",
+        display: "select",
+        values:dimentions,
+      };
     this.trigger("registerOptions", options); // register options with parent page to update visConfig
 
     // Clear any errors from previous updates
