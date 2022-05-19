@@ -32,7 +32,7 @@ looker.plugins.visualizations.add({
     console.log("START");
     element.innerHTML = `
       <style>
-        #container{
+        #scatter_container{
           /* Vertical centering */
           height: 100%;
           display: flex;
@@ -101,6 +101,15 @@ looker.plugins.visualizations.add({
       var obj = {};
       obj[field.label_short] = field.name;
       dimentions.push(obj);
+      if (config.x_axis == field.name){
+        chart.xAxis().title(field.label_short);
+
+      }
+      if (config.y_axis == field.name){
+        chart.yAxis().title(field.label_short);
+
+      }
+
     });
 
     queryResponse.fields.dimension_like.forEach(function (field) {
@@ -108,6 +117,15 @@ looker.plugins.visualizations.add({
       var obj = {};
       obj[field.label_short] = field.name;
       dimentions.push(obj);
+
+      if (config.x_axis == field.name){
+        chart.xAxis().title(field.label_short);
+
+      }
+      if (config.y_axis == field.name){
+        chart.yAxis().title(field.label_short);
+
+      }
 
       /*
       id = "color_" + field.name;
@@ -183,8 +201,9 @@ console.log("queryResponse");
     //var series2 = chart.line(data_2);
     //var series1 = chart.bubble(data_3);
 
-    chart.xAxis().title(queryResponse.fields.dimensions[0].name);
-    chart.yAxis().title(queryResponse.fields.dimensions[1].name);
+
+    //chart.xAxis().title(queryResponse.fields.dimensions[0].name);
+    //chart.yAxis().title(queryResponse.fields.dimensions[1].name);
     chart.draw();
 
     // set the container id
