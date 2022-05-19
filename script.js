@@ -34,11 +34,10 @@ looker.plugins.visualizations.add({
           font-size: 18px;
         }
       </style>
-      <div id="container" style="width: 100%; height: 100%"></div>
+
     `;
 
-    chart = anychart.scatter();
-    chart.container("container");
+
 
     // initiate drawing the chart
 
@@ -62,6 +61,13 @@ looker.plugins.visualizations.add({
     console.log("config");
     console.log(config);
 
+
+    var container = element.appendChild(document.createElement("div"));
+    container.setAttribute("id", "container");
+
+
+    chart = anychart.scatter();
+    chart.container("container");
 
 
     options = {};
