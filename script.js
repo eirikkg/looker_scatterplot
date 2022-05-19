@@ -1,4 +1,17 @@
 var chart;
+
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+
+
 looker.plugins.visualizations.add({
   // Id and Label are legacy properties that no longer have any function besides documenting
   // what the visualization used to have. The properties are now set via the manifest
@@ -61,8 +74,8 @@ looker.plugins.visualizations.add({
     console.log("config");
     console.log(config);
 
-    var el = document.getElementById('scatter_container');
-    el.removeChild(el.lastElementChild);
+
+    document.getElementById("scatter_container").remove();
 
 
     var container = element.appendChild(document.createElement("div"));
