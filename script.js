@@ -178,7 +178,8 @@ console.log("queryResponse");
     // create a chart
 
     // create the first series (marker) and set the data
-    var series1 = chart.bubble(data_3);
+    //var series1 = chart.bubble(data_3);
+    var series1 = chart.marker(data_3);
 
     // create the second series (line) and set the data
     //var series2 = chart.line(data_2);
