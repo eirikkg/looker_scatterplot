@@ -69,6 +69,24 @@ looker.plugins.visualizations.add({
 
     var dimentions = [];
     queryResponse.fields.measure_like.forEach(function (field) {
+      console.log(field);
+      var obj = {};
+      obj[field.name] = field.label_short;
+      dimentions.push(obj);
+
+      /*
+      id = "color_" + field.name;
+      options[id] = {
+        label: field.label_short + " Color",
+        default: "#8B7DA8",
+        section: "Style",
+        type: "string",
+        display: "color",
+      };*/
+    });
+
+     queryResponse.fields.dimension_like.forEach(function (field) {
+      console.log(field);
       var obj = {};
       obj[field.name] = field.label_short;
       dimentions.push(obj);
