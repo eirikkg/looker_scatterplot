@@ -71,7 +71,7 @@ looker.plugins.visualizations.add({
     queryResponse.fields.measure_like.forEach(function (field) {
       console.log(field);
       var obj = {};
-      obj[field.name] = field.label_short;
+      obj[field.label_short] = field.name;
       dimentions.push(obj);
 
       /*
@@ -85,10 +85,10 @@ looker.plugins.visualizations.add({
       };*/
     });
 
-     queryResponse.fields.dimension_like.forEach(function (field) {
+    queryResponse.fields.dimension_like.forEach(function (field) {
       console.log(field);
       var obj = {};
-      obj[field.name] = field.label_short;
+      obj[field.label_short] = field.name;
       dimentions.push(obj);
 
       /*
@@ -106,7 +106,7 @@ looker.plugins.visualizations.add({
     console.log(dimentions);
 
     options["y_axis"] = {
-      label: +"Y Axis ",
+      label: "Y Axis ",
       section: "Series",
       type: "string",
       display: "select",
@@ -114,11 +114,11 @@ looker.plugins.visualizations.add({
     };
 
     options["x_axis"] = {
-      label: +"X Axis ",
+      label: "X Axis ",
       section: "Series",
       type: "string",
       display: "select",
-      values: [{ test: "jadda" }],
+      values: dimentions,
     };
     this.trigger("registerOptions", options); // register options with parent page to update visConfig
 
