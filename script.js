@@ -96,11 +96,13 @@ looker.plugins.visualizations.add({
     // Create an option for each measure in your query
 
     var dimentions = [];
+    var measures = [];
     queryResponse.fields.measure_like.forEach(function (field) {
       console.log(field);
       var obj = {};
       obj[field.label_short] = field.name;
       dimentions.push(obj);
+      measures.push(obj);
       if (config.x_axis == field.name){
         chart.xAxis().title(field.label_short);
 
@@ -156,10 +158,19 @@ looker.plugins.visualizations.add({
       display: "select",
       values: dimentions,
     };
+    options["bouble_size"] = {
+      label: "Bouble Size ",
+      section: "Series",
+      type: "string",
+      display: "select",
+      values: measures,
+    };
     this.trigger("registerOptions", options); // register options with parent page to update visConfig
 
     // Clear any errors from previous updates
     this.clearErrors();
+
+
 
     // Throw some errors and exit if the shape of the data isn't what this chart needs
     if (queryResponse.fields.dimensions.length === 0) {
@@ -186,7 +197,9 @@ console.log("queryResponse");
     data.forEach((row) => {
       data_3.push({
         x: row[config.x_axis].value,
-        y: row[config.y_axis].value,
+        //y: row[config.y_axis].value,
+        value: row[config.y_axis].value,
+        size: row[config.bouble_size].value,
       });
     });
 
