@@ -191,7 +191,7 @@ looker.plugins.visualizations.add({
     //this._textElement.innerHTML = LookerCharts.Utils.htmlForCell(firstCell + " Hei");
 
 
-console.log("queryResponse");
+    console.log("queryResponse");
     console.log(queryResponse);
     data_3 = [];
     data.forEach((row) => {
@@ -203,12 +203,13 @@ console.log("queryResponse");
       });
     });
 
+    console.log("data_3");
     console.log(data_3);
     // create a chart
 
     // create the first series (marker) and set the data
     //var series1 = chart.bubble(data_3);
-    var series1 = chart.marker(data_3);
+    var series1 = chart.bubble(data_3);
 
     // create the second series (line) and set the data
     //var series2 = chart.line(data_2);
