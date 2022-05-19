@@ -61,6 +61,9 @@ looker.plugins.visualizations.add({
     console.log("config");
     console.log(config);
 
+    var el = element.getElementById('container');
+    el.removeChild(el.lastElementChild);
+
 
     var container = element.appendChild(document.createElement("div"));
     container.setAttribute("id", "container");
