@@ -69,7 +69,7 @@ looker.plugins.visualizations.add({
     var dimentions = [];
     queryResponse.fields.measure_like.forEach(function (field) {
 
-      dimentions.push(field.name);
+      dimentions.push({field.name:field.label_short});
 
 
 
@@ -84,6 +84,9 @@ looker.plugins.visualizations.add({
       };*/
     });
 
+    console.log("dimentions");
+    console.log(dimentions);
+
       options["y_axis"] = {
         label: + "Y Axis ",
         section: "Series",
@@ -97,7 +100,7 @@ looker.plugins.visualizations.add({
         section: "Series",
         type: "string",
         display: "select",
-        values:dimentions,
+        values:[{"test":"jadda"}],
       };
     this.trigger("registerOptions", options); // register options with parent page to update visConfig
 
