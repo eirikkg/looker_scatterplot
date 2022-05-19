@@ -74,8 +74,14 @@ looker.plugins.visualizations.add({
     console.log("config");
     console.log(config);
 
-
+  try{
     document.getElementById("scatter_container").remove();
+  }catch (error) {
+  console.error(error);
+  // expected output: ReferenceError: nonExistentFunction is not defined
+  // Note - error messages will vary depending on browser
+}
+
 
 
     var container = element.appendChild(document.createElement("div"));
