@@ -62,6 +62,8 @@ looker.plugins.visualizations.add({
     console.log("config");
     console.log(config);
 
+
+
     options = {};
     // Create an option for each measure in your query
 
