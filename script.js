@@ -221,12 +221,12 @@ looker.plugins.visualizations.add({
                 .useHtml(true)
                 .fontColor('#fff')
                 .format(function () {
-                    return this.getData('name') + '<br/>' +
-                            'Power: <span style="color: #d2d2d2; font-size: 12px">' +
+                    return "Rute " + this.getData('name') + '<br/>' +
+                            'GjSn Rutetid: <span style="color: #d2d2d2; font-size: 12px">' +
                             this.getData('value') + '</span></strong><br/>' +
-                            'Pulse: <span style="color: #d2d2d2; font-size: 12px">' +
+                            'Rutelengde: <span style="color: #d2d2d2; font-size: 12px">' +
                             this.getData('x') + '</span></strong><br/>' +
-                            'Duration: <span style="color: #d2d2d2; font-size: 12px">' +
+                            'GjSn Volum: <span style="color: #d2d2d2; font-size: 12px">' +
                             this.getData('size') + ' min.</span></strong>';
                 });
 
