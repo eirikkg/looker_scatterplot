@@ -95,13 +95,14 @@ looker.plugins.visualizations.add({
     options = {};
     // Create an option for each measure in your query
 
-    var dimentions = [];
+    var both = [];
     var measures = [];
+    var dimentions = [];
     queryResponse.fields.measure_like.forEach(function (field) {
       console.log(field);
       var obj = {};
       obj[field.label_short] = field.name;
-      dimentions.push(obj);
+      both.push(obj);
       measures.push(obj);
       if (config.x_axis == field.name){
         chart.xAxis().title(field.label_short);
@@ -118,6 +119,7 @@ looker.plugins.visualizations.add({
       console.log(field);
       var obj = {};
       obj[field.label_short] = field.name;
+      both.push(obj);
       dimentions.push(obj);
 
       if (config.x_axis == field.name){
@@ -128,27 +130,17 @@ looker.plugins.visualizations.add({
         chart.yAxis().title(field.label_short);
 
       }
-
-      /*
-      id = "color_" + field.name;
-      options[id] = {
-        label: field.label_short + " Color",
-        default: "#8B7DA8",
-        section: "Style",
-        type: "string",
-        display: "color",
-      };*/
     });
 
-    console.log("dimentions");
-    console.log(dimentions);
+    console.log("both");
+    console.log(both);
 
     options["y_axis"] = {
       label: "Y Axis ",
       section: "Series",
       type: "string",
       display: "select",
-      values: dimentions,
+      values: both,
     };
 
     options["x_axis"] = {
@@ -156,7 +148,7 @@ looker.plugins.visualizations.add({
       section: "Series",
       type: "string",
       display: "select",
-      values: dimentions,
+      values: both,
     };
     options["bouble_size"] = {
       label: "Bouble Size ",
@@ -164,6 +156,14 @@ looker.plugins.visualizations.add({
       type: "string",
       display: "select",
       values: measures,
+    };
+
+    options["bouble_name"] = {
+      label: "Bouble Name ",
+      section: "Series",
+      type: "string",
+      display: "select",
+      values: dimentions,
     };
     this.trigger("registerOptions", options); // register options with parent page to update visConfig
 
@@ -200,6 +200,7 @@ looker.plugins.visualizations.add({
         //y: row[config.y_axis].value,
         value: row[config.y_axis].value,
         size: row[config.bouble_size].value,
+        name: row[config.bouble_name].value,
       });
     });
 
@@ -214,7 +215,20 @@ looker.plugins.visualizations.add({
     // create the second series (line) and set the data
     //var series2 = chart.line(data_2);
     //var series1 = chart.bubble(data_3);
+    chart.minBubbleSize(3).maxBubbleSize(10);
 
+    chart.tooltip()
+                .useHtml(true)
+                .fontColor('#fff')
+                .format(function () {
+                    return this.getData('name') + '<br/>' +
+                            'Power: <span style="color: #d2d2d2; font-size: 12px">' +
+                            this.getData('value') + '</span></strong><br/>' +
+                            'Pulse: <span style="color: #d2d2d2; font-size: 12px">' +
+                            this.getData('x') + '</span></strong><br/>' +
+                            'Duration: <span style="color: #d2d2d2; font-size: 12px">' +
+                            this.getData('size') + ' min.</span></strong>';
+                });
 
     //chart.xAxis().title(queryResponse.fields.dimensions[0].name);
     //chart.yAxis().title(queryResponse.fields.dimensions[1].name);
